@@ -22,7 +22,7 @@ totData<-as.data.frame(sapply(totData,gsub,pattern="24510",replacement="Baltimor
 #Open graphics device
 png(filename="plot6.png", width=480, height=480)
 #Plotting The growth on 2 cities with ggplot
-p <- ggplot(totData, aes(Year, Growth, fill = Location)) + 
+ggplot(totData, aes(Year, Growth, fill = Location)) + 
     geom_bar(position = "dodge", stat="identity") + 
     labs(y="Variation (in %)") + 
     ggtitle(expression(atop(" variation of emission of PM2.5", 
