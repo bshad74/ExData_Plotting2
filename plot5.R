@@ -15,7 +15,7 @@ aggData$x <- aggData$x/1000
 png(filename="plot5.png", width=480, height=480)
 
 #Plotting the details to answer how emissions changed from motor vecicle sources 
-p <- ggplot(aggData) + 
+ggplot(aggData) + 
     geom_line(aes(y = x, x = Year)) + 
     labs(y="Amount of PM2.5 emitted (tons)") + 
     ggtitle(expression(atop("Total PM2.5 emission from motor vehicle sources", 
