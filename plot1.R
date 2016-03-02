@@ -1,0 +1,21 @@
+#Read the rds data for PM2.5 Emissions Data and Source Classification Code Table
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+
+#Sum of all emissions group by individual years
+aggData<-with (NEI,aggregate(NEI[,'Emissions'],by=list(year), sum, na.rm=TRUE))
+
+#Change the col names for this aggregared data to more meaningful
+names(aggData) <- c('Year', 'TotEmission')
+
+#Open the graphic device to plot the data
+png("plot1.png", width=480, height=480)
+
+#Plot the aggregated data of total emissions from PM2.5 for all the years
+plot(aggData, type="b", pch = 18, col="green", xlab="Year", ylab="Emmisions", 
+      xaxt="n", main="Annual Emissions (tons)")
+
+#Plot the x-axis that contains the year
+axis(1, at=as.integer(aggData$Year), las=1)
+#Shut the graphic device
+dev.off()
